@@ -1,0 +1,34 @@
+{
+  "name": "js-email-autocomplete",
+  "homepage": "https://github.com/noc2spam/JSEmailAutoComplete",
+  "authors": [
+    "gogol <thcdesigning@gmail.com>"
+  ],
+  "description": "inline email auto-complete solution written in Pure Javascript.",
+  "main": "dev/js-email-autocomplete.js",
+  "keywords": [
+    "autocomplete",
+    "email",
+    "prefill",
+    "mail",
+    "domain"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "b0cdbea619",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "b0cdbea6196a291df0f5fc2829b5e0bbc652b53f"
+  },
+  "_source": "https://github.com/noc2spam/JSEmailAutoComplete.git",
+  "_target": "*",
+  "_originalSource": "js-email-autocomplete",
+  "_direct": true
+}
