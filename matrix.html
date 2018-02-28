@@ -21,6 +21,20 @@
 			margin:0;
 			padding:0;
 		}
+		.close-button {
+			cursor: pointer;
+			position: absolute;
+			top: 1px;
+			right: -20px;
+		}
+		[data-key='preheaders']>ul>li, [data-key='items']>ul>li {
+		background-color:#51A0ED !important;
+		}
+		#sortable-to li{
+			position:relative;
+		}
+
+
 	 </style>
 </head>
 <body>
@@ -142,11 +156,24 @@ jQuery(function(){
 		filter: "[data-key='preheaders']>ul>li, [data-key='items']>ul>li",
 		end:function(e){
 			e.preventDefault();
-			e.item.clone().removeAttr('style').removeAttr('role').appendTo('#sortable-to');
+			var $el = e.item.clone().removeAttr('style').removeAttr('role');
+			 
+			$el.removeClass('k-state-active').addClass('k-state-default');
+			$el.append('<span class="k-icon k-i-close k-panelbar-close close-button"></span>');
+			$el.find('[data-key]').each(function(){
+				$(this).append('<span class="k-icon k-i-close k-panelbar-close close-button"></span>');
+			});
+			$el.appendTo('#sortable-to');
 		}
 	});
 	$("#sortable-to").kendoSortable({
 		placeholder: placeholder
+	});
+	$(document).on('click', '.close-button', function(){
+		var $pel = $(this).parent();
+		$pel.slideUp(500,function(){
+			$pel.remove();
+		});
 	});
 });
 </script>
