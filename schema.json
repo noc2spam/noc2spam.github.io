@@ -22,6 +22,7 @@
           },
           "block_type": {
             "custom": {
+              "max_occurs": 0,
               "type": "object",
               "allowed_children": [
                 "#/definitions/block/custom",
