@@ -1,0 +1,3 @@
+[submodule "yalil"]
+	path = yalil
+	url = https://github.com/noc2spam/yalil.git
