@@ -22,6 +22,7 @@
             if(qlength == 0){
                 clearInterval(interval);
                 $.event.trigger("imagesLoaded");
+                
                 return;
             }
             if(!queue[0].started){
@@ -47,7 +48,6 @@
             interval = setInterval(processImageQueue,100);
         }
         var $el = $this.find(settings.selector);
-        $el.hide();
         $el.each(function(){
             $(this).attr('data-original-src', $(this).attr('src'));
             $(this).attr('src', settings.loadingImage);
