@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>FunnyTEXT encoder/decoder</title>
+    <style>
+        .wrap {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        button {
+            border: 1px solid #ccc;
+            padding: 4px 16px;
+            margin-right: 10px;
+            color: #222;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <p>Enter the text you want to encode/decode:</p>
+        <textarea id="textarea" style="width: 100%;height: 400px;"></textarea>
+        <button type="button" id="decode">Decode</button>
+        <button type="button" id="encode">Encode</button>
+    </div>
+
+</body>
+<script>
+    let swap = function (json) {
+        var ret = {};
+        for (var key in json) {
+            ret[json[key]] = key;
+        }
+        return ret;
+    };
+    let charAssociations = {
+        "0": "o",
+        "1": "i",
+        "3": "e",
+        "4": "a",
+        "5": "s",
+        "6": "g",
+        "7": "t"
+    };
+    let txtArea = document.getElementById("textarea");
+    let decodeFunnyText = function (str, charAssociationsLocal) {
+        var charAA = [];
+        if (typeof charAssociationsLocal != "undefined") {
+            charAA = charAssociationsLocal;
+        } else {
+            charAA = charAssociations;
+        }
+        var charArray = str.split('');
+        for (var i in charArray) {
+            if (typeof charAA[charArray[i]] != "undefined") {
+                charArray[i] = charAA[charArray[i]];
+            }
+        }
+        return charArray.join('');
+    };
+    let encodeFunnyText = function (str) {
+        console.log(swap(charAssociations));
+        return decodeFunnyText(str, swap(charAssociations));
+    };
+
+
+
+    document.getElementById("decode").addEventListener('click', function () {
+        txtArea.value = decodeFunnyText(txtArea.value);
+    });
+    document.getElementById("encode").addEventListener('click', function () {
+        txtArea.value = encodeFunnyText(txtArea.value);
+    });
+</script>
+
+</html>
