@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>FunnyTEXT encoder/decoder</title>
+    <title>Funny73X7 3nc0d3r/d3c0d3r</title>
     <style>
         .wrap {
             width: 80%;
@@ -48,28 +48,33 @@
         "7": "t"
     };
     let txtArea = document.getElementById("textarea");
+    let capitalizeFirstLetter = function (string) {
+        string = string.toLowerCase();
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    };
     let decodeFunnyText = function (str, charAssociationsLocal) {
-        var charAA = [];
+        let charAA = [];
         if (typeof charAssociationsLocal != "undefined") {
             charAA = charAssociationsLocal;
         } else {
             charAA = charAssociations;
         }
-        var charArray = str.split('');
-        for (var i in charArray) {
-            if (typeof charAA[charArray[i]] != "undefined") {
-                charArray[i] = charAA[charArray[i]];
+        let charArray = str.split('');
+        for (let i in charArray) {
+            if (typeof charAA[charArray[i].toLowerCase()] != "undefined") {
+                charArray[i] = charAA[charArray[i].toLowerCase()];
             }
         }
-        return charArray.join('');
+        str = charArray.join('');
+        charArray = str.split(".");
+        for (let i in charArray) {
+            charArray[i] = capitalizeFirstLetter(charArray[i]);
+        }
+        return charArray.join('.');
     };
     let encodeFunnyText = function (str) {
-        console.log(swap(charAssociations));
         return decodeFunnyText(str, swap(charAssociations));
     };
-
-
-
     document.getElementById("decode").addEventListener('click', function () {
         txtArea.value = decodeFunnyText(txtArea.value);
     });
